@@ -6,45 +6,93 @@
     <title>Welcome!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            background: radial-gradient(circle, #ff7eb3, #ff758c, #ff5e62);
             color: white;
             text-align: center;
+            overflow: hidden;
         }
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: glow 2s infinite alternate;
         }
         p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
         .button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.2rem;
             color: #ff758c;
             background-color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .button:hover {
             background-color: #ffe0e6;
+            transform: scale(1.1);
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff758c, 0 0 20px #ff758c, 0 0 30px #ff758c;
+            }
+            to {
+                text-shadow: 0 0 20px #ff5e62, 0 0 30px #ff5e62, 0 0 40px #ff5e62;
+            }
+        }
+        .floating {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        .floating:nth-child(2) {
+            top: 50%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+        .floating:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+            }
         }
     </style>
 </head>
 <body>
     <div>
-        <h1>Welcome to Our Website!</h1>
-        <p>We're so so glad to have you here. Explore and enjoy your stay!</p>
+        <h1>Welcome to Our Amazing Website!</h1>
+        <p>Get ready to experience something extraordinary. Let's dive in!</p>
         <button class="button" onclick="alert('Thank you for visiting!')">Get Started</button>
     </div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
 </body>
 </html>
