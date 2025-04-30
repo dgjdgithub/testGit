@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 300;
             margin: 0;
             padding: 0;
             display: flex;
@@ -101,6 +102,25 @@
                 transform: scale(1);
             }
         }
+        .meteor {
+            position: absolute;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), white);
+            border-radius: 2px;
+            transform: rotate(45deg);
+            animation: meteor 2s ease-in-out infinite;
+        }
+        @keyframes meteor {
+            0% {
+                opacity: 1;
+                transform: translate(-200px, -200px) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(100vw, 100vh) rotate(45deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -126,7 +146,21 @@
             }, 3000);
         }
 
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.classList.add('meteor');
+            meteor.style.top = Math.random() * 50 + 'vh';
+            meteor.style.left = Math.random() * 50 + 'vw';
+            meteor.style.transform = 'rotate(135deg)'; // Adjust rotation for head-heavy appearance
+            document.body.appendChild(meteor);
+
+            setTimeout(() => {
+                meteor.remove();
+            }, 2000);
+        }
+
         setInterval(createStar, 200);
+        setInterval(createMeteor, 3000);
     </script>
 </body>
 </html>
