@@ -1,132 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
-    <style>
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: radial-gradient(circle, #ff7eb3, #ff758c, #ff5e62);
-            color: white;
-            text-align: center;
-            overflow: hidden;
+<style>
+    .meteor {
+        position: absolute;
+        width: 2px;
+        height: 80px;
+        background: linear-gradient(to bottom, white, transparent);
+        border-radius: 50%;
+        animation: shoot 2s linear infinite;
+    }
+    @keyframes shoot {
+        0% {
+            opacity: 1;
+            transform: translate(-50px, -50px) rotate(45deg) scale(1);
         }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: glow 2s infinite alternate;
+        100% {
+            opacity: 0;
+            transform: translate(100vw, 100vh) rotate(45deg) scale(0.5);
         }
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: #ff758c;
-            background-color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .button:hover {
-            background-color: #ffe0e6;
-            transform: scale(1.1);
-        }
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #ff758c, 0 0 20px #ff758c, 0 0 30px #ff758c;
-            }
-            to {
-                text-shadow: 0 0 20px #ff5e62, 0 0 30px #ff5e62, 0 0 40px #ff5e62;
-            }
-        }
-        .floating {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s infinite ease-in-out;
-        }
-        .floating:nth-child(1) {
-            top: 10%;
-            left: 20%;
-            animation-delay: 0s;
-        }
-        .floating:nth-child(2) {
-            top: 50%;
-            left: 70%;
-            animation-delay: 2s;
-        }
-        .floating:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            animation-delay: 4s;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-20px) scale(1.1);
-            }
-        }
-        .star {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <h1>Welcome to Our Amazing Website!</h1>
-        <p>Get ready to experience something extraordinary. Let's dive in!</p>
-        <button class="button" onclick="alert('Thank you for visiting!')">Get Started</button>
-    </div>
-    <div class="floating"></div>
-    <div class="floating"></div>
-    <div class="floating"></div>
-    <script>
-        function createStar() {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.top = Math.random() * 100 + 'vh';
-            star.style.left = Math.random() * 100 + 'vw';
-            star.style.animationDuration = Math.random() * 2 + 2 + 's';
-            document.body.appendChild(star);
+    }
+</style>
+<script>
+    function createMeteor() {
+        const meteor = document.createElement('div');
+        meteor.classList.add('meteor');
+        meteor.style.top = Math.random() * 50 + 'vh';
+        meteor.style.left = Math.random() * 50 + 'vw';
+        document.body.appendChild(meteor);
 
-            setTimeout(() => {
-                star.remove();
-            }, 3000);
-        }
+        setTimeout(() => {
+            meteor.remove();
+        }, 2000);
+    }
 
-        setInterval(createStar, 200);
-    </script>
-</body>
-</html>
+    setInterval(createMeteor, 500);
+</script>
